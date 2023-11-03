@@ -114,4 +114,4 @@ class CitationDataset:
 
 if __name__ == "__main__":
     dataset = CitationDataset()
-    dataset.load_dataframe()
+
