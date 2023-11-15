@@ -15,8 +15,12 @@ class CitationDataset:
     If you already have the downloaded zip file, put it into a folder named DATA.
     """
 
-    def __init__(self) -> None:
-        self._base_path = os.getcwd()
+    def __init__(self, cache_dir: str = "") -> None:
+        if not cache_dir:
+            self._base_path = os.getcwd()
+        else:
+            self._base_path = cache_dir
+
         self._folder_path: str = self._base_path + "/DATA"
         self._subfolder_path: str = self._folder_path + "/dblp-ref"
         self._zip_path: str = self._folder_path + "/dblp.v10.zip"
@@ -114,4 +118,3 @@ class CitationDataset:
 
 if __name__ == "__main__":
     dataset = CitationDataset()
-
