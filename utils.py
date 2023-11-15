@@ -1,9 +1,11 @@
 import pandas as pd
 from tqdm import tqdm
-from typing import List
 
 
-def get_referenced_by(df: pd.DataFrame) -> List[int]:
+def get_referenced_by(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Returns a dataframe with a column 'referenced_by' that contains a list of IDs that reference the current ID.
+    """
     ref_df = df[["id", "references"]]
     reversed_refs = {}
     for _, row in tqdm(ref_df.iterrows(), total=ref_df.shape[0]):
@@ -22,7 +24,7 @@ def get_referenced_by(df: pd.DataFrame) -> List[int]:
     full_df["n_counted_citations"] = full_df["referenced_by"].apply(
         lambda x: len(x) if isinstance(x, list) else 0
     )
-    full_df["n_citations"] = full_df["references"].apply(
+    full_df["n_references"] = full_df["references"].apply(
         lambda x: len(x) if isinstance(x, list) else 0
     )
     return full_df
