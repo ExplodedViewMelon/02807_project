@@ -1,3 +1,7 @@
 DATA/
 *.pkl
+mutagen.yml
+mutagen.yml.lock
+*.pyc
 __pycache__/
+.DS_Store
