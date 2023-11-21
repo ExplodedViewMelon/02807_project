@@ -1,5 +1,15 @@
 import pandas as pd
 from tqdm import tqdm
+from collections import Counter
+
+
+def clean_text(aString):
+    output = aString.replace('\n','')
+    output_list = output.split()
+    output_list = [''.join(ch for ch in aWord if ch.isalnum()) for aWord in output_list]
+    output_list = [s.lower() for s in output_list]
+    output = ' '.join(output_list)
+    return " ".join(output.split())
 
 
 def get_referenced_by(df: pd.DataFrame) -> pd.DataFrame:
@@ -8,7 +18,7 @@ def get_referenced_by(df: pd.DataFrame) -> pd.DataFrame:
     """
     ref_df = df[["id", "references"]]
     reversed_refs = {}
-    for _, row in tqdm(ref_df.iterrows(), total=ref_df.shape[0]):
+    for _, row in tqdm(ref_df.iterrows(), total=ref_df.shape[0], desc="Reversing references"):
         for ref in row["references"]:
             # Add the current ID to the list of IDs that reference 'ref'
             if ref in reversed_refs:
@@ -20,7 +30,7 @@ def get_referenced_by(df: pd.DataFrame) -> pd.DataFrame:
         list(reversed_refs.items()), columns=["id", "referenced_by"]
     )
 
-    full_df = pd.merge(df, reversed_df, on="id", how="outer")
+    full_df = pd.merge(df, reversed_df, on="id", how="left")
     full_df["n_counted_citations"] = full_df["referenced_by"].apply(
         lambda x: len(x) if isinstance(x, list) else 0
     )
@@ -29,14 +39,9 @@ def get_referenced_by(df: pd.DataFrame) -> pd.DataFrame:
     )
     return full_df
 
-#Filtering
-filtered_df=full_df[(full_df["n_counted_citations"]!=0) & (full_df["n_references"]!=0) &
-                    (full_df["abstract"]!="") & (full_df["title"]!="")]
-
-#TF-IDF on the user input + jaccard similarity function 
-from collections import Counter
 
 def input_tf_idf(user_input):
+    #TF-IDF on the user input + jaccard similarity function 
     tokenize_input=user_input.lower().split()
     word_count=Counter(tokenize_input)
     total_words=len(tokenize_input)
@@ -58,3 +63,12 @@ def jaccard_similarity(tf,keywords):
     union=len(unionset)
     similarity=intersection/union
     return similarity
+
+
+def filter_df(df: pd.DataFrame) -> pd.DataFrame:
+    df["abstract"] = df["abstract"].apply(clean_text)
+    df = df[df["abstract"] != ""]
+    df = df[df["title"] != ""]
+    df = df[(df["n_references"] > 0) | (df["n_counted_citations"] > 0)]
+    return df
+    
