@@ -43,6 +43,7 @@ def get_model(save_path: str, shingle_size=2, signature_size=250, subset=False) 
         print("Filtering dataframe...")
         df = filter_df(df)
 
+        print("Calculating signatures...")
         df["signature"] = df["abstract"].parallel_apply(get_signature, 
                                                         shingle_size=shingle_size, 
                                                         sig_len=signature_size)
@@ -81,13 +82,14 @@ if __name__ == "__main__":
     
     shingle_size = 2
     signature_length = 250
+    subset = True
     
-    model_name = f"model_df_{shingle_size}_{signature_length}.pkl"
+    model_name = f"model_df_{shingle_size}_{signature_length}{'_subset' if subset else ''}.pkl"
     
     model_df = get_model(model_name, 
                          shingle_size=shingle_size, 
                          signature_size=signature_length, 
-                         subset=True)
+                         subset=subset)
     
     test_idx = 500
     prompt = model_df.iloc[test_idx]["abstract"]
