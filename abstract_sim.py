@@ -49,7 +49,7 @@ def get_model(save_path: str, shingle_size=2, signature_size=250, subset=False) 
                                                         sig_len=signature_size)
         with open(save_path, "wb") as f:
             pickle.dump(df, f)
-    return df.convert_dtypes(dtype_backend="pyarrow")
+    return df
 
 
 def jaccard2(signature1, signature2):
@@ -71,18 +71,23 @@ def get_most_similar(df, promt, shingle_size=2, signature_size=250, n_top=10):
                               shingle_size=shingle_size, 
                               sig_len=signature_size)
 
-    df["sim"] = df["signature"].apply(jaccard2, signature2=promt_sig)
+    df["sim"] = df["signature"].parallel_apply(jaccard2, signature2=promt_sig)
+    
+    return df.nlargest(n_top, "sim")
+    
+    # maxnindex = df["sim"].nlargest(n_top).index
 
-    return df[df["sim"] > 0].sort_values("sim", ascending=False).head(n_top)
+    # return df.iloc[maxnindex, :].sort_values("sim", ascending=False)
+
 
 
 if __name__ == "__main__":
     
-    pandarallel.initialize(nb_workers=4, progress_bar=True)
+    pandarallel.initialize(nb_workers=10, progress_bar=True)
     
     shingle_size = 2
     signature_length = 250
-    subset = True
+    subset = False
     
     model_name = f"model_df_{shingle_size}_{signature_length}{'_subset' if subset else ''}.pkl"
     
@@ -93,7 +98,7 @@ if __name__ == "__main__":
     
     test_idx = 500
     prompt = model_df.iloc[test_idx]["abstract"]
-    model_df = model_df.drop([test_idx], axis=0)
+    model_df = model_df.drop([test_idx], axis=0).reset_index(drop=True)
     # for speedup: https://stackoverflow.com/questions/73845259/efficient-cosine-similarity-between-dataframe-rows
     
     print()
