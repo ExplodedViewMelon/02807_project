@@ -74,11 +74,6 @@ def get_most_similar(df, promt, shingle_size=2, signature_size=250, n_top=10):
     df["sim"] = df["signature"].parallel_apply(jaccard2, signature2=promt_sig)
     
     return df.nlargest(n_top, "sim")
-    
-    # maxnindex = df["sim"].nlargest(n_top).index
-
-    # return df.iloc[maxnindex, :].sort_values("sim", ascending=False)
-
 
 
 if __name__ == "__main__":
@@ -88,6 +83,7 @@ if __name__ == "__main__":
     shingle_size = 2
     signature_length = 250
     subset = False
+    prompt = None
     
     model_name = f"model_df_{shingle_size}_{signature_length}{'_subset' if subset else ''}.pkl"
     
@@ -96,10 +92,11 @@ if __name__ == "__main__":
                          signature_size=signature_length, 
                          subset=subset)
     
-    test_idx = 500
-    prompt = model_df.iloc[test_idx]["abstract"]
-    model_df = model_df.drop([test_idx], axis=0).reset_index(drop=True)
-    # for speedup: https://stackoverflow.com/questions/73845259/efficient-cosine-similarity-between-dataframe-rows
+    # TODO: implement user input for prompt
+    if not prompt:
+        test_idx = 500
+        prompt = model_df.iloc[test_idx]["abstract"]
+        model_df = model_df.drop([test_idx], axis=0).reset_index(drop=True)
     
     print()
     print(f"{prompt=}")
