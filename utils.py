@@ -28,3 +28,7 @@ def get_referenced_by(df: pd.DataFrame) -> pd.DataFrame:
         lambda x: len(x) if isinstance(x, list) else 0
     )
     return full_df
+
+#Filtering
+filtered_df=full_df[(full_df["n_counted_citations"]!=0) & (full_df["n_references"]!=0) &
+                    (full_df["abstract"]!="") & (full_df["title"]!="")]
