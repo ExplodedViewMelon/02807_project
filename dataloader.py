@@ -86,7 +86,7 @@ class CitationDataset:
 
         return df
 
-    def load_graph(self, df: pd.DataFrame) -> nx.Graph:
+    def load_graph(self, df: pd.DataFrame) -> nx.DiGraph:
         """
         Loads networkx DiGraph from dataframe.
         """
