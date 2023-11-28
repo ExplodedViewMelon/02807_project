@@ -1,9 +1,7 @@
 import pandas as pd
 import os
-from numpy import ndarray
 import requests
 from tqdm import tqdm
-import numpy as np
 import requests
 import zipfile
 import networkx as nx
@@ -90,10 +88,9 @@ class CitationDataset:
         """
         Loads networkx DiGraph from dataframe.
         """
-
         # Create an empty directed graph
         G = nx.DiGraph()
-
+        
         # Iterate through the DataFrame and add nodes and edges to the graph
         for _, row in tqdm(df.iterrows(), total=len(df)):
             node_id = row.id
@@ -112,7 +109,10 @@ class CitationDataset:
 
             # Add edges from the node to its references
             for reference in references:
-                G.add_edge(node_id, reference)
+                if reference in df['id']:
+                    G.add_edge(node_id, reference)
+                else:
+                    print(f"Reference {reference} not found in the DataFrame.")
         return G
 
 
