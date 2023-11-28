@@ -95,7 +95,7 @@ class Search:
         query_vector = self.model.encode(search_sentences)
 
         # Search in the index
-        return self.index.search(query_vector, k)
+        return self.index.search(query_vector, k)  # type: ignore
 
     def search_index_vocal(self, query: str, top_k=5) -> None:
         distances, neighbors = self.search_index([query], k=top_k)
