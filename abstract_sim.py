@@ -2,6 +2,7 @@ import mmh3
 import sys
 import os
 import pickle
+import json
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
@@ -110,10 +111,11 @@ if __name__ == "__main__":
     print()
     print(f"{prompt=}")
 
+    print("Finding most similar papers...")
     df_top = get_most_similar(model_df, 
                               prompt,
                               shingle_size=shingle_size,
                               signature_size=signature_length, 
                               n_top=10)
     print()
-    print(df_top[['title', 'abstract', 'sim', 'n_references', 'n_counted_citations']])
+    print(json.dumps(json.loads(df_top[['title', 'abstract', 'authors', 'sim', 'n_references', 'n_counted_citations']].to_json(orient='records')), indent=4))
