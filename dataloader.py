@@ -90,7 +90,7 @@ class CitationDataset:
         """
         # Create an empty directed graph
         G = nx.DiGraph()
-        
+
         # Iterate through the DataFrame and add nodes and edges to the graph
         for _, row in tqdm(df.iterrows(), total=len(df)):
             node_id = row.id
@@ -109,10 +109,10 @@ class CitationDataset:
 
             # Add edges from the node to its references
             for reference in references:
-                if reference in df['id']:
+                if reference in df["id"]:
                     G.add_edge(node_id, reference)
-                else:
-                    print(f"Reference {reference} not found in the DataFrame.")
+                # else:
+                #     print(f"Reference {reference} not found in the DataFrame.")
         return G
 
 

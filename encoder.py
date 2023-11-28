@@ -17,8 +17,10 @@ class Search:
         path_data: str = "/work3/s174032/02807_project_data",
         make_embeddings=False,
         make_index=False,
+        use_subset=False,
     ):
         self.path_data = path_data
+        self.use_subset = use_subset
 
         self.dataset = CitationDataset(cache_dir=self.path_data)
 
@@ -48,7 +50,7 @@ class Search:
 
         # load dataset
 
-        df = self.dataset.load_dataframe()
+        df = self.dataset.load_dataframe(subset=self.use_subset)
 
         df["content"] = df.title + ". " + df.abstract
 
@@ -87,16 +89,16 @@ class Search:
         index = faiss.read_index(self.path_data + "/encodings.index")
         return index
 
-    def search_index(self, search_sentences, index, k=5):
+    def search_index(self, search_sentences, k=5):
         # return distances, k nearest neighbor indexes
 
         query_vector = self.model.encode(search_sentences)
 
         # Search in the index
-        return index.search(query_vector, k)
+        return self.index.search(query_vector, k)
 
     def search_index_vocal(self, query: str, top_k=5) -> None:
-        distances, neighbors = self.search_index([query], self.index, k=top_k)
+        distances, neighbors = self.search_index([query], k=top_k)
 
         # Print the results
         print("\nNearest Neighbors:")
@@ -120,7 +122,7 @@ class Search:
             return list(itertools.chain.from_iterable([nested_list]))
 
         # get paper from id
-        row = self.df.query("id == @id")
+        row = self.df.query("id == @id").iloc[0]
         rows_references = row.references
 
         # get papers nearest encodings
@@ -249,7 +251,7 @@ def benchmark():
 
     t0 = time.time()
     for search_prompt in search_prompts:
-        S.search_index([search_prompt], S.index, 5)
+        S.search_index([search_prompt], 5)
 
     print(time.time() - t0, "s elapsed during 100 searches (top_k=5)")
 
@@ -261,23 +263,24 @@ if __name__ == "__main__":
     not_referenced, referenced = S.find_similar_papers()
     print("similar papers", not_referenced)
 
+    id: str = "001eef4f-1d00-4ae6-8b4f-7e66344bbc6e"
+    k: int = 10
+    # get paper from id
+    row = S.df.query("id == @id")
+    rows_references = row.references[0]
 
-id: str = "001eef4f-1d00-4ae6-8b4f-7e66344bbc6e"
-k: int = 10
-# get paper from id
-row = S.df.query("id == @id")
-rows_references = row.references[0]
+    # get papers nearest encodings
+    distances, neighbors = S.index.search((row.embeddings[0].reshape(1, -1)), k)  # type: ignore
+    rows_vector_search = S.df.iloc[list(neighbors[0])]
 
-# get papers nearest encodings
-distances, neighbors = S.index.search((row.embeddings[0].reshape(1, -1)), k)  # type: ignore
-rows_vector_search = S.df.iloc[list(neighbors[0])]
+    rows_non_overlapping = rows_vector_search[
+        ~rows_vector_search.id.isin(rows_references)
+    ]
+    rows_overlapping = rows_vector_search[rows_vector_search.id.isin(rows_references)]
 
-rows_non_overlapping = rows_vector_search[~rows_vector_search.id.isin(rows_references)]
-rows_overlapping = rows_vector_search[rows_vector_search.id.isin(rows_references)]
+    print(rows_non_overlapping, rows_overlapping)
 
-print(rows_non_overlapping, rows_overlapping)
-
-for index, r in rows_non_overlapping.iterrows():
-    print(r.title)
-    print(r.abstract)
-    print("-")
+    for index, r in rows_non_overlapping.iterrows():
+        print(r.title)
+        print(r.abstract)
+        print("-")
