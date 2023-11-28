@@ -94,7 +94,7 @@ if __name__ == "__main__":
                          signature_size=signature_length, 
                          subset=subset)
     
-    if sys.argv[1]:
+    if len(sys.argv) == 2:
         try:
             with open(sys.argv[1], "r") as f:
                 prompt = f.read()
@@ -116,4 +116,4 @@ if __name__ == "__main__":
                               signature_size=signature_length, 
                               n_top=10)
     print()
-    print(f"{df_top[['title', 'sim']]=}")
+    print(df_top[['title', 'abstract', 'sim', 'n_references', 'n_counted_citations']])
