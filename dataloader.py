@@ -77,7 +77,7 @@ class CitationDataset:
         df = pd.DataFrame()
         for file in reversed(self._file_paths):
             print("loading", file)
-            df = pd.concat((df, pd.read_json(file, lines=True, dtype_backend="pyarrow")))
+            df = pd.concat((df, pd.read_json(file, lines=True)))
             if subset:  # stop after reading the last, and smallest of the json files
                 break
 
