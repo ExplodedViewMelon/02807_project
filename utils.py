@@ -70,5 +70,6 @@ def filter_df(df: pd.DataFrame) -> pd.DataFrame:
     df = df[df["abstract"] != ""]
     df = df[df["title"] != ""]
     df = df[(df["n_references"] > 0) | (df["n_counted_citations"] > 0)]
-    return df
+    
+    return df.reset_index(drop=True)
     
