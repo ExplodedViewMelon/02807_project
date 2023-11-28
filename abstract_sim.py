@@ -18,7 +18,7 @@ def minhash(text_list, seed) -> int:
     hash_list = [mmh3.hash(shingle, seed) for shingle in text_list] 
     return min(hash_list)
 
-def get_signature(text: str, shingle_size = 3, sig_len = 5):    
+def get_signature(text: str, shingle_size = 3, sig_len = 50):    
     shingle_list = shingle(text, shingle_size)
     if len(shingle_list) == 0:
         return np.nan
@@ -33,9 +33,11 @@ def get_signature(text: str, shingle_size = 3, sig_len = 5):
 
 def get_model(save_path: str, shingle_size=2, signature_size=250, subset=False) -> pd.DataFrame:
     if os.path.exists(save_path):
+        print("Loading cached dataframe...")
         with open(save_path, "rb") as f:
             df = pickle.load(f)
     else:
+        print("Loading dataframe...")
         dataset = CitationDataset()
         df = dataset.load_dataframe(subset=subset)
         
@@ -73,7 +75,7 @@ def get_most_similar(df, promt, shingle_size=2, signature_size=250, n_top=10):
 
     df["sim"] = df["signature"].parallel_apply(jaccard2, signature2=promt_sig)
     
-    return df.nlargest(n_top, "sim")
+    return df.nlargest(n_top, ["sim", "n_counted_citations"])
 
 
 if __name__ == "__main__":
@@ -92,8 +94,15 @@ if __name__ == "__main__":
                          signature_size=signature_length, 
                          subset=subset)
     
-    # TODO: implement user input for prompt
+    if sys.argv[1]:
+        try:
+            with open(sys.argv[1], "r") as f:
+                prompt = f.read()
+        except FileNotFoundError as e:
+            sys.exit(f"File {sys.argv[1]} not found.")
+    
     if not prompt:
+        print("No prompt given, using random abstract from dataset.")
         test_idx = 500
         prompt = model_df.iloc[test_idx]["abstract"]
         model_df = model_df.drop([test_idx], axis=0).reset_index(drop=True)
