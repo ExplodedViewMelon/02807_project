@@ -85,7 +85,7 @@ if __name__ == "__main__":
     
     shingle_size = 2
     signature_length = 250
-    subset = False
+    subset = True
     prompt = None
     
     model_name = f"model_df_{shingle_size}_{signature_length}{'_subset' if subset else ''}.pkl"
@@ -97,14 +97,18 @@ if __name__ == "__main__":
     
     if len(sys.argv) == 2:
         try:
+            filename = sys.argv[1]
+            output_file = filename + ".search_result.json"
             with open(sys.argv[1], "r") as f:
                 prompt = f.read()
+                
         except FileNotFoundError as e:
             sys.exit(f"File {sys.argv[1]} not found.")
     
     if not prompt:
         print("No prompt given, using random abstract from dataset.")
         test_idx = 500
+        output_file = "test.search_result.json"
         prompt = model_df.iloc[test_idx]["abstract"]
         model_df = model_df.drop([test_idx], axis=0).reset_index(drop=True)
     
@@ -118,4 +122,8 @@ if __name__ == "__main__":
                               signature_size=signature_length, 
                               n_top=10)
     print()
-    print(json.dumps(json.loads(df_top[['title', 'abstract', 'authors', 'sim', 'n_references', 'n_counted_citations']].to_json(orient='records')), indent=4))
+    
+    print(f"Writing results to {output_file}...")
+    with open(output_file, "w") as f:
+        f.write(json.dumps(json.loads(df_top[['title', 'abstract', 'authors', 'sim', 'n_references', 'n_counted_citations']].to_json(orient='records')), indent=4))
+        f.write("\n\n")

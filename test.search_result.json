@@ -1,0 +1,123 @@
+[
+    {
+        "title": "An artificial neural network approach for screening test escapes",
+        "abstract": "in this paper we investigate the application of an artificial neural network ann for screening test escapes specifically we propose to train an autoencoder an ann in an unsupervised way to fit the good chip population ie using good chips only as the training set the autoencoder is designed with both its input and output layers representing a set of features that characterize the test data of the chips under test where we use the euclidean distance between the values in the input and output layers as the cost function for training based on the trained autoencoder if the test measurement of a query chip has an abnormally large value for the cost function the chip is likely to be a test escape because it does not fit the characteristics of the good chip population captured by the model we demonstrate that an autoencoderbased classification could achieve a higher detection rate for test escapes and a significant reduction in runtime and memory usage compared with an svm applied on the same features and some additional proximity features generated from multiple nonlinear transformations",
+        "authors": [
+            "Fan Lin",
+            "Kwang-Ting Cheng"
+        ],
+        "sim": 0.0266940452,
+        "n_references": 17,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "Sets in excess demand in simple ascending auctions with unit-demand bidders",
+        "abstract": "this paper analyzes the problem of selecting a set of items whose prices are to be updated in the next iteration in so called simple ascending auctions with unitdemand bidders a family of sets called sets in excess demand is introduced and the main result demonstrates that a simple ascending auction always terminates at the minimum walrasian equilibrium prices if and only if the selection belongs to this family copyright springer sciencebusiness media new york 2013",
+        "authors": [
+            "Tommy Andersson",
+            "Cajsa Andersson",
+            "A.J.J. Talman"
+        ],
+        "sim": 0.0266940452,
+        "n_references": 3,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "A Wearable Robotic Device Based on Twisted String Actuation for Rehabilitation and Assistive Applications",
+        "abstract": "the preliminary experimental study toward the implementation of an arm rehabilitation device based on a twisted string actuation module is presented the actuation module is characterized by an integrated force sensor based on optoelectronic components the adopted actuation system can be used for a wide set of robotic applications and is particularly suited for very compact lightweight and wearable robotic devices such as wearable rehabilitation systems and exoskeletons thorough presentation and description of the proposed actuation module as well as the basic force sensor working principle are illustrated and discussed a conceptual design of a wearable arm assistive system based on the proposed actuation module is presented moreover the actuation module has been used in a simple assistive application in which surfaceelectromyography signals are used to detect muscle activity of the user wearing the system and to regulate the support action provided to the user to reduce his effort showing in this way the effectiveness of the approach",
+        "authors": [
+            "Mohssen Hosseini",
+            "Roberto Meattini",
+            "Gianluca Palli",
+            "Claudio Melchiorri"
+        ],
+        "sim": 0.0266940452,
+        "n_references": 2,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "Ubiquitous substitution",
+        "abstract": "ubiquitous interaction places the user in the centre of dynamic configurations of technology where work not necessarily is performed through a single personal computer but supported by a multiplicity of technologies and physical devices this paper presents an activitytheoretically based framework for analyzing ubiquitous substitution ie a set of mediators that are or can be continuously substituted with the purpose of highlighting expected and indented uses and the conflicts encountered when attempting substitution between them the paper develops a fourleveled analysis of such mediators and point towards a minimalist approach to design of ubiquitous interaction",
+        "authors": [
+            "Christina Brodersen",
+            "Susanne B\u00f8dker",
+            "Clemens Nylandsted Klokmose"
+        ],
+        "sim": 0.0266940452,
+        "n_references": 7,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "One-Page Multimedia Interactive Map",
+        "abstract": "the relevance of local knowledge in cultural heritage is by now acknowledged it helps to determine many communitybased projects by identifying the material to be digitally maintained in multimedia collections provided by communities of volunteers rather than forprofit businesses or government entities considering that the search and browsing of texts images video and 3d models related to places is more essential than using a simple textbased search an interactive multimedia map was implemented in this study the map which is loaded on a single hypertext markup language html page using ajax asynchronous javascript and xml with a clientside control mechanism utilising jquery components that are both freely available and adhoc developed is updated according to user interaction to simplify the publication of georeferenced information the application stores all the data in a geographic javascript object notation geojson file rather than in a database the multimedia contentsassociated with the selected points of interest poiscan be selected through text search and list browsing as well as by viewing their previews one by one in a sequence all together in a scrolling window respectively table folder and tile functions poisvisualised on the map with multishape markers using a set of unambiguous colourscan be filtered through their categories and types accessibility status and timeline thus improving the system usability the map functions are illustrated using data collected in a comenius project notes on the application software and architecture are also presented in this paper",
+        "authors": [
+            "Nicola Maiellaro",
+            "Antonietta Varasano"
+        ],
+        "sim": 0.0245901639,
+        "n_references": 2,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "Optimal service order for mass-casualty incident response",
+        "abstract": "in the aftermath of a masscasualty incident one of the first steps in the response is to triage the casualties triage systems categorize the casualties based on criticality and then prioritize casualties for transfer to hospitals for further treatment the prioritization is usually based on simply ordering the casualty types without considering the available resources to transport them and the scale of the disaster these factors can significantly affect the outcome of the rescue efforts in this research we study a mathematical model to incorporate the above mentioned factors in the triage process we assume a disaster location with a set of casualties categorized by criticality and care requirements that must be transported to hospitals in the region using a fleet of available ambulances the goal is to maximize the expected number of survivors we analyze the structure of the optimal solution to this problem and compare the performance of the model with the current practice and other related models in the literature",
+        "authors": [
+            "Behrooz Kamali",
+            "Douglas R. Bish",
+            "Roger Glick"
+        ],
+        "sim": 0.0245901639,
+        "n_references": 3,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "A novel entropy-based sensitivity analysis approach for complex systems",
+        "abstract": "the modern electronic systems have become very complex with a high number of potential factors that may affect the systems behavior sensitivity analysis may be employed to simplify the analysis of such systems and identify the most important factors upfront the paper introduces two new sensitivity analysis methods based on the measure of entropy which overcome the limitation of several stateoftheart methods imposing a specific design of experiments and a high computational cost measured as the number of simulations measurements needed for the sensitivity analysis their performance is compared to other methods based on variance decomposition and onefactoratatime screening the proposed methods named the entropy simple method and the entropy pair one are applied on a set of custom functions and an ebike application they proved to have comparable accuracy to the stateoftheart methods with the advantage of a lower computational cost and which does not increase with the number of factors",
+        "authors": [
+            "Ingrid Kovacs",
+            "Alexandra Iosub",
+            "Marina Topa",
+            "Andi Buzo",
+            "Georg Pelz"
+        ],
+        "sim": 0.0245901639,
+        "n_references": 2,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "Leveraging Battery Usage from Mobile Devices for Active Authentication",
+        "abstract": "active authentication is the practice of continuously verifying the identity of users based on their context interactions with a system and information provided by that system in this paper we investigate if battery charge readings from mobile devices can be used as an extra factor to improve active authentication we make use of a large data set of battery charge readings from real users and construct two computationally inexpensive machine learning classifiers to predict if a user session is authentic the first one only based on the battery charge at a certain time of day the second one predicts the authenticity of the user session when a previous recent battery charge reading is available our research shows that a simple twofigure battery charge value can make a useful albeit minor contribution to active authentication",
+        "authors": [
+            "Jan Spooren",
+            "Davy Preuveneers",
+            "Wouter Joosen"
+        ],
+        "sim": 0.0245901639,
+        "n_references": 12,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "High-order repetitive control for discrete-time linear switched systems",
+        "abstract": "abstractthis paper is concerned with the design of a highorder repetitive control rc law for a class of discretetime linear switched systems with repetitionvarying reference trajectories first a highorder rc law which embeds the characteristic of known variation of the reference trajectories is proposed to the system and a twodimensional 2d model is presented to describe the control and learning actions of the repetitive control system by using the lifting technique by choosing appropriate multiple lyapunovkrasovskii functions sufficient conditions for asymptotic stability of the 2d system are derived in the form of a set of linear matrix inequalities finally an example is given to illustrate the effectiveness of the proposed results",
+        "authors": [
+            "Zhen Shao",
+            "Zhengrong Xiang"
+        ],
+        "sim": 0.0245901639,
+        "n_references": 16,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "How High Should We Go? Determining Reservation Values to Negotiate Successfully for Composite Software Services",
+        "abstract": "in the paradigm of servicecentric computing new valueadded applications can be developed dynamically and flexibly by combining and integrating existing services while software applications are traditionally specified and implemented as a set of functions uniform to all users this new paradigm allows the same software service to be delivered with a different price response time availability and other nonfunctional attributes to accommodate different modes of use these nonfunctional attributes together are referred to as quality of service qos when creating a new composite service negotiation makes it possible for a service provider to offer the service with the qos properties customized to the needs of a user automated negotiation tactics require the specification of reservation values for the qos attributes we present a methodology that determines the reservation values a user or broker should use for each component service based on the users minimum requirements for the composite servic",
+        "authors": [
+            "Sherry X. Sun",
+            "Jing Zhao",
+            "Sumit Sarkar"
+        ],
+        "sim": 0.0245901639,
+        "n_references": 34,
+        "n_counted_citations": 0
+    }
+]
+
