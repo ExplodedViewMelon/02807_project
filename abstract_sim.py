@@ -85,7 +85,7 @@ if __name__ == "__main__":
     
     shingle_size = 2
     signature_length = 250
-    subset = True
+    subset = False
     prompt = None
     
     model_name = f"model_df_{shingle_size}_{signature_length}{'_subset' if subset else ''}.pkl"

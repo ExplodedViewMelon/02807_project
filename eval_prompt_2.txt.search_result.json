@@ -1,0 +1,118 @@
+[
+    {
+        "title": "The impact of evaluation on multilingual text retrieval",
+        "abstract": "we summarize the impact of the first five years of activity of the crosslanguage evaluation forum clef on multilingual text retrieval system performance and show how the clef evaluation campaigns have contributed to advances in the stateoftheart",
+        "authors": [
+            "Julio Gonzalo",
+            "Carol Peters"
+        ],
+        "sim": 0.0416666667,
+        "n_references": 3,
+        "n_counted_citations": 4
+    },
+    {
+        "title": "A survey of common security vulnerabilities and corresponding countermeasures for SaaS",
+        "abstract": "software as a service saas is the most prevalent service delivery mode for cloud systems this paper surveys common security vulnerabilities and corresponding countermeasures for saas it is primarily focused on the work published in the last five years we observe current saas security trends and a lack of sufficiently broad and robust countermeasures in some of the saas security area such as identity and access management due to the growth of saas applications",
+        "authors": [
+            "Donghoon Kim",
+            "Mladen A. Vouk"
+        ],
+        "sim": 0.0416666667,
+        "n_references": 22,
+        "n_counted_citations": 2
+    },
+    {
+        "title": "Semiconducting Metal Oxide Based Sensors for Selective Gas Pollutant Detection",
+        "abstract": "a review of some papers published in the last fifty years that focus on the semiconducting metal oxide smo based sensors for the selective and sensitive detection of various environmental pollutants is presented",
+        "authors": [
+            "Sofian M. Kanan",
+            "Oussama M. El-Kadri",
+            "Imad A. Abu-Yousef",
+            "Marsha C. Kanan"
+        ],
+        "sim": 0.0395010395,
+        "n_references": 0,
+        "n_counted_citations": 10
+    },
+    {
+        "title": "Simulation optimization: simulation-based optimization",
+        "abstract": "in this tutorial we present an introduction to simulationbased optimization which is perhaps the most important new simulation technology in the last five years we give a precise statement of the problem being addressed and also experimental results for two commercial optimization packages applied to a manufacturing example with seven decision variables",
+        "authors": [
+            "Michael G. McComas"
+        ],
+        "sim": 0.0373443983,
+        "n_references": 3,
+        "n_counted_citations": 22
+    },
+    {
+        "title": "BMC Bioinformatics comes of age",
+        "abstract": "almost exactly 5 years ago in early june 2000 bmc bioinformatics received its first submission five years on it has received over a thousand submissions and the journal is continuing to grow rapidly",
+        "authors": [
+            "Matthew Cockerill"
+        ],
+        "sim": 0.0373443983,
+        "n_references": 3,
+        "n_counted_citations": 2
+    },
+    {
+        "title": "Demand variability and incentives in inventory-based contracts",
+        "abstract": "we present some results on the impact of demand variability on stocking policies and incentives to forecast in the context of single period inventorybased contracts in a manufacturerretailer channel",
+        "authors": [
+            "Anand Paul",
+            "Indranil Bose"
+        ],
+        "sim": 0.0373443983,
+        "n_references": 4,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "Sustainable dynamics of size-structured forest under climate change",
+        "abstract": "this work investigates the impact of global climate change on the sustainable growth of forest namely on its aggregated characteristics such as the number of trees the basal area and the amount of carbon sequestrated in the stand the forest dynamics is described by a nonlinear sizestructured population model the existence of a steady state regime is proven and explicit formulas for the aggregated characteristics are obtained a numeric simulation on realistic data illustrates and extends the analytic results obtained",
+        "authors": [
+            "Natali Hritonenko",
+            "Yuri Yatsenko",
+            "Renan-Ulrich Goetz",
+            "Angels Xabadia"
+        ],
+        "sim": 0.0373443983,
+        "n_references": 1,
+        "n_counted_citations": 0
+    },
+    {
+        "title": "Performance of transmit diversity over time-varying Rayleigh-fading channels",
+        "abstract": "we analyze the impact of a timevarying rayleigh fading channel on the performance of an alamouti transmitdiversity scheme we propose several detection strategies for mitigating the effects of a timevarying channel and derive expressions for their biterror probability as a function of the channel correlation coefficient spl rho",
+        "authors": [
+            "Antony Vielmon",
+            "Ye Li",
+            "John R. Barry"
+        ],
+        "sim": 0.0351966874,
+        "n_references": 1,
+        "n_counted_citations": 15
+    },
+    {
+        "title": "Broadband and e-Government Diffusion",
+        "abstract": "this article focuses on the relationship between egovernment services and broadband connections the importance of broadband availability for a sound economic development has been advocated by both the academic and political world however little evidence has been provided as to its impact on egovernment the paper consists of two main parts the first part provides a brief literature review of broadband diffusion and impact the second part provides a comprehensive understanding of the impact of broadband on egovernment demand and supply in italian region called piedmont the third and final part analyses the broadband diffusion process occurred in the last five years in piedmont",
+        "authors": [
+            "Enrico Ferro",
+            "Daniele De Leonardis",
+            "Lucy Dadayan"
+        ],
+        "sim": 0.0351966874,
+        "n_references": 1,
+        "n_counted_citations": 2
+    },
+    {
+        "title": "The impact of terrestrial radiation effects on the reliability of a smart grid",
+        "abstract": "this paper analyzes the impact of terrestrial radiation effects on the reliability of a smart grid the mechanisms of radiation effects on semiconductor devices are briefly introduced and mitigation techniques are presented since this is a new research area the future directions in it are discussed",
+        "authors": [
+            "Xiaoyin Yao",
+            "Hui Ni",
+            "G. Alonzo Vera"
+        ],
+        "sim": 0.0351966874,
+        "n_references": 1,
+        "n_counted_citations": 1
+    }
+]
+
